@@ -103,12 +103,12 @@ HEAD 指向当前所在分支的最新提交
 
 ### 安装 Git
 
-| 平台 | 命令/方法 |
-| ---- | --------- |
-| Ubuntu/Debian | `sudo apt install git` |
-| CentOS/RHEL | `sudo yum install git` |
-| macOS | `brew install git` |
-| Windows | 下载安装包 https://git-scm.com/download/win |
+| 平台          | 命令/方法                                   |
+| ------------- | ------------------------------------------- |
+| Ubuntu/Debian | `sudo apt install git`                    |
+| CentOS/RHEL   | `sudo yum install git`                    |
+| macOS         | `brew install git`                        |
+| Windows       | 下载安装包 https://git-scm.com/download/win |
 
 ### 配置用户信息
 
@@ -272,6 +272,7 @@ origin  https://github.com/user/repo.git (push)
 
 ```bash
 # 拉取远程更新
+git pull [远程仓库] [远程分支名]
 git pull origin main         # 拉取并合并
 git pull --rebase            # 拉取并变基
 
@@ -279,6 +280,7 @@ git pull --rebase            # 拉取并变基
 git fetch origin
 
 # 推送本地修改
+git push [远程仓库] [本地分支名]
 git push origin main
 git push -u origin main      # 首次推送并设置上游
 ```
@@ -390,10 +392,10 @@ Hi username! You've successfully authenticated...
 
 ## 3.4 GitHub 与本地仓库的关联方式
 
-| 方式 | 地址格式 | 特点 |
-| ---- | -------- | ---- |
+| 方式  | 地址格式                             | 特点                      |
+| ----- | ------------------------------------ | ------------------------- |
 | HTTPS | `https://github.com/user/repo.git` | 需输入用户名/密码或 token |
-| SSH | `git@github.com:user/repo.git` | 配置密钥后免密 |
+| SSH   | `git@github.com:user/repo.git`     | 配置密钥后免密            |
 
 ### 两种方式的切换
 
@@ -484,10 +486,13 @@ git add 文件名               # 添加指定文件
 # 3. 提交到本地仓库
 git commit -m "提交信息"
 
-# 4. 拉取远程最新代码（避免冲突）
+# 4.设置远程仓库
+git remote add origin [remote-url]
+
+# 5. 拉取远程最新代码（避免冲突）
 git pull origin main
 
-# 5. 推送到远程仓库
+# 6. 推送到远程仓库
 git push origin main
 ```
 
@@ -578,40 +583,40 @@ git push -u origin feature-xxx
 
 ## 5.6 常见 Git 操作流程速查
 
-| 步骤 | 命令 | 说明 |
-| ---- | ---- | ---- |
-| 初始化 | `git init` | 创建本地仓库 |
-| 关联远程 | `git remote add origin <url>` | 关联 GitHub 仓库 |
-| 添加 | `git add .` | 添加所有文件到暂存区 |
-| 提交 | `git commit -m "msg"` | 提交到本地仓库 |
-| 拉取 | `git pull origin main` | 获取远程最新更新 |
-| 推送 | `git push origin main` | 推送到 GitHub |
+| 步骤     | 命令                            | 说明                 |
+| -------- | ------------------------------- | -------------------- |
+| 初始化   | `git init`                    | 创建本地仓库         |
+| 关联远程 | `git remote add origin <url>` | 关联 GitHub 仓库     |
+| 添加     | `git add .`                   | 添加所有文件到暂存区 |
+| 提交     | `git commit -m "msg"`         | 提交到本地仓库       |
+| 拉取     | `git pull origin main`        | 获取远程最新更新     |
+| 推送     | `git push origin main`        | 推送到 GitHub        |
 
 ---
 
 # 6. 常用命令速查表
 
-| 功能 | 命令 |
-| ---- | ---- |
-| 查看状态 | `git status` |
-| 查看历史 | `git log --oneline` |
-| 添加文件 | `git add .` |
-| 提交 | `git commit -m "msg"` |
-| 推送 | `git push origin main` |
-| 拉取 | `git pull origin main` |
-| 获取远程更新 | `git fetch origin` |
-| 查看分支 | `git branch` |
-| 创建分支 | `git branch <name>` |
-| 切换分支 | `git switch <name>` |
-| 合并分支 | `git merge <name>` |
-| 删除分支 | `git branch -d <name>` |
-| 撤销修改 | `git restore <file>` |
-| 撤销暂存 | `git restore --staged <file>` |
-| 撤销提交 | `git reset --soft HEAD~1` |
-| 强制回退 | `git reset --hard <commit>` |
-| 暂存修改 | `git stash` |
-| 恢复暂存 | `git stash pop` |
-| 打标签 | `git tag -a v1.0 -m "msg"` |
-| 推送标签 | `git push --tags` |
+| 功能         | 命令                            |
+| ------------ | ------------------------------- |
+| 查看状态     | `git status`                  |
+| 查看历史     | `git log --oneline`           |
+| 添加文件     | `git add .`                   |
+| 提交         | `git commit -m "msg"`         |
+| 推送         | `git push origin main`        |
+| 拉取         | `git pull origin main`        |
+| 获取远程更新 | `git fetch origin`            |
+| 查看分支     | `git branch`                  |
+| 创建分支     | `git branch <name>`           |
+| 切换分支     | `git switch <name>`           |
+| 合并分支     | `git merge <name>`            |
+| 删除分支     | `git branch -d <name>`        |
+| 撤销修改     | `git restore <file>`          |
+| 撤销暂存     | `git restore --staged <file>` |
+| 撤销提交     | `git reset --soft HEAD~1`     |
+| 强制回退     | `git reset --hard <commit>`   |
+| 暂存修改     | `git stash`                   |
+| 恢复暂存     | `git stash pop`               |
+| 打标签       | `git tag -a v1.0 -m "msg"`    |
+| 推送标签     | `git push --tags`             |
 
 ---
